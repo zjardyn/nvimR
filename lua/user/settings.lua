@@ -12,3 +12,4 @@ vim.opt.tabstop = 4       -- The width of a tab character
 vim.opt.shiftwidth = 4    -- The width for auto-indents
 vim.opt.expandtab = true  -- Convert tabs to spaces
 
+vim.g.rout_follow_colorscheme = true

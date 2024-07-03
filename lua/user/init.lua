@@ -30,8 +30,8 @@ require('lazy').setup({
                         vim.api.nvim_buf_set_keymap(0, "v", "<Enter>", "<Plug>RSendSelection", {})
                     end
                 },
-                min_editor_width = 72,
-                rconsole_width = 78,
+                min_editor_width = 18,
+                rconsole_width = 57,
                 disable_cmds = {
                         "RClearConsole",
                         "RCustomStart",
@@ -48,7 +48,7 @@ require('lazy').setup({
                 end
                 require("r").setup(opts)
             end,
-    lazy = false
+    lazy = false,
   },
   {
     "nvim-treesitter/nvim-treesitter",
@@ -112,7 +112,24 @@ require('lazy').setup({
   { 'nvim-lualine/lualine.nvim', },
   { 'numToStr/Comment.nvim', opts = {} },
   { 'numToStr/FTerm.nvim'},
+  {
+  "folke/which-key.nvim",
+  event = "VeryLazy",
+  init = function()
+    vim.o.timeout = true
+    vim.o.timeoutlen = 300
+  end,
+  opts = {
+    -- your configuration comes here
+    -- or leave it empty to use the default settings
+    -- refer to the configuration section below
+  }
+}
 })
 
 vim.cmd [[colorscheme moonfly]]
+
+vim.g.R_app = "radian"
+vim.g.R_cmd = "R"
+
 
