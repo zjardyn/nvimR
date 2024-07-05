@@ -15,6 +15,7 @@ end
 vim.opt.rtp:prepend(lazypath)
 
 require('lazy').setup({
+    { "bluz71/vim-nightfly-colors", name = "nightfly", lazy = false, priority = 1000 },
     { "bluz71/vim-moonfly-colors", name = "moonfly", lazy = false, priority = 1000 },
     { "R-nvim/R.nvim",
     config = function ()
@@ -23,11 +24,20 @@ require('lazy').setup({
                 R_args = {"--quiet", "--no-save"},
                 hook = {
                     on_filetype = function ()
-                        -- This function will be called at the FileType event
-                        -- of files supported by R.nvim. This is an
-                        -- opportunity to create mappings local to buffers.
-                        vim.api.nvim_buf_set_keymap(0, "n", "<Enter>", "<Plug>RDSendLine", {})
-                        vim.api.nvim_buf_set_keymap(0, "v", "<Enter>", "<Plug>RSendSelection", {})
+                    -- This function will be called at the FileType event
+                    -- of files supported by R.nvim. This is an
+                    -- opportunity to create mappings local to buffers.
+                       vim.api.nvim_buf_set_keymap(0, "n", "<Enter>", "<Plug>RDSendLine", {})
+                       vim.api.nvim_buf_set_keymap(0, "v", "<Enter>", "<Plug>RSendSelection", {})
+
+                       -- vim.api.nvim_buf_set_keymap(0, "n", "<LocalLeader>L", "<Cmd>lua require('r.run').action('levels')<CR>", {})
+                       -- vim.api.nvim_buf_set_keymap(0, "v", "<leader>T", "<Cmd>lua require('r.run').action('head')<CR>", {})
+                       -- vim.api.nvim_buf_set_keymap(0, "n", "<leader>H", "<Cmd>lua require('r.run').action('head', 'n', ', n = 10')<CR>", {})
+
+                       vim.api.nvim_buf_set_keymap(0, "n", "<leader>L", "<Cmd>lua require('r.send').cmd('devtools::load_all(\".\")')<CR>", {})
+                       vim.api.nvim_buf_set_keymap(0, "n", "<leader>C", "<Cmd>lua require('r.send').cmd('devtools::check()')<CR>", {})
+                       vim.api.nvim_buf_set_keymap(0, "n", "<leader>P", "<Cmd>lua require('r.send').cmd('devtools::install()')<CR>", {})
+
                     end
                 },
                 min_editor_width = 18,
@@ -49,6 +59,7 @@ require('lazy').setup({
                 require("r").setup(opts)
             end,
     lazy = false,
+    rproj_prioritise = { "pipe_version" },
   },
   {
     "nvim-treesitter/nvim-treesitter",
@@ -62,6 +73,7 @@ require('lazy').setup({
       require("cmp_r").setup({ })
     end,
   },
+
   -- language
   {'sar/cmp-lsp.nvim'},
   {'hrsh7th/cmp-vsnip'},
@@ -82,8 +94,7 @@ require('lazy').setup({
 
 
   -- {'hrsh7th/nvim-cmp'},
-  {'onsails/lspkind.nvim'},
-  {
+  {'onsails/lspkind.nvim'}, {
     'nvim-telescope/telescope.nvim',
     branch = '0.1.x',
     dependencies = {
@@ -123,11 +134,27 @@ require('lazy').setup({
     -- your configuration comes here
     -- or leave it empty to use the default settings
     -- refer to the configuration section below
-  }
-}
+      }
+    },
+    {'HiPhish/rainbow-delimiters.nvim'},
+    {'norcalli/nvim-colorizer.lua'}
 })
 
-vim.cmd [[colorscheme moonfly]]
+-- require("moonfly").custom_colors({
+--         yellow = "#8cc85f",
+--         green = "#e3c78a"
+-- })
+
+-- require("moonfly").custom_colors({
+--     bg = "#121212",
+--     violet = "#ff74b8",
+-- })
+-- vim.cmd([[colorscheme moonfly]])
+
+require'colorizer'.setup()
+
+vim.cmd [[colorscheme nightfly]]
+-- vim.g.nightflyNormalFloat = true
 
 vim.g.R_app = "radian"
 vim.g.R_cmd = "R"
