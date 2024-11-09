@@ -29,8 +29,8 @@ vim.opt.formatoptions:remove 'o'
 vim.opt.scrolloff = 5
 
 vim.opt.cmdheight = 1 -- hide cmdline when not used
-vim.opt.showtabline = 1
-vim.opt.winbar = '%f'
+-- vim.opt.showtabline = 1
+-- vim.opt.winbar = '%f'
 vim.opt.completeopt = 'menuone,noinsert' -- show autocomplete menu
 vim.opt.laststatus = 3 -- global statusline
 vim.opt.showmode = false
