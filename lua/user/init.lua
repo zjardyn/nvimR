@@ -61,10 +61,10 @@ require('lazy').setup({
     lazy = false,
     rproj_prioritise = { "pipe_version" },
   },
-  {
-    "nvim-treesitter/nvim-treesitter",
-    run = ":TSUpdate"
-  },
+  -- {
+  --   "nvim-treesitter/nvim-treesitter",
+  --   run = ":TSUpdate"
+  -- },
   "R-nvim/cmp-r",
   {
     "hrsh7th/nvim-cmp",
