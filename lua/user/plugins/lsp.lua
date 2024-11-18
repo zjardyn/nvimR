@@ -132,6 +132,9 @@ return {
       }
 
       lspconfig.r_language_server.setup {
+        handlers = {
+            ["textDocument/publishDiagnostics"] = function() end
+                },
         capabilities = capabilities,
         flags = lsp_flags,
         settings = {

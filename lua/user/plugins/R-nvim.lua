@@ -1,5 +1,6 @@
 return {
     { "R-nvim/R.nvim",
+    enabled = true,
     config = function ()
             -- Create a table with the options to be passed to setup()
             local opts = {
@@ -23,7 +24,7 @@ return {
                     end
                 },
                 min_editor_width = 18,
-                rconsole_width = 57,
+                rconsole_width = 50,
                 disable_cmds = {
                         "RClearConsole",
                         "RCustomStart",

@@ -105,7 +105,7 @@ return {
           format = lspkind.cmp_format {
             mode = 'symbol',
             menu = {
-              otter = '[🦦]',
+              otter = '[otter]',
               nvim_lsp = '[LSP]',
               nvim_lsp_signature_help = '[sig]',
               luasnip = '[snip]',
