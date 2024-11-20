@@ -1,3 +1,4 @@
+-- General Settings
 vim.g.mapleader = " "
 vim.g.maplocalleader = " "
 -- proper colors
@@ -44,4 +45,8 @@ vim.opt.smartcase = true
 
 -- disable fill chars (the ~ after the buffer)
 vim.o.fillchars = 'eob: '
+
+-- RNvim
+vim.g.R_app = "radian"
+vim.g.R_cmd = "R"
 
